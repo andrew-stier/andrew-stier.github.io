@@ -1,15 +1,15 @@
 ---
-title: "Paper Title Number 1"
+title: "Environmental neuroscience."
 collection: publications
-permalink: /publication/2009-10-01-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2009-10-01
-venue: 'Journal 1'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+permalink: /publication/2019-12-01-environmental_neuro
+excerpt: 'Environmental neuroscience is an emerging field devoted to the scientific study of brain-mediated, bidirectional relationships between organisms and their social and physical environments.'
+date: 2019-12-01
+venue: 'American Psychologist'
+paperurl: 'http://andrewstier.github.io/files/env_neuro.pdf'
+citation: 'Berman, M. G., Stier, A. J., & Akcelik, G. N. (2019). Environmental neuroscience. American Psychologist, 74(9), 1039.'
 ---
-This paper is about the number 1. The number 2 is left for future work.
+Environmental neuroscience is an emerging field devoted to the scientific study of brain-mediated, bidirectional relationships between organisms and their social and physical environments. A key feature of environmental neuroscience is the rigorous quantification of environmental features that affect the brain and subsequent behavior. In addition, environmental neuroscience considers factors that vary across multiple temporal and spatial scales that interact to produce behavior (eg, synapses, neural circuits, cognition, local social interactions, citywide social interactions, citywide physical structures). Environmental neuroscientists then measure the spatial and temporal dynamics of the interactions between different levels of analysis. For example, we demonstrate through hierarchical systems theory and mathematical modeling how interacting with urban greenspace may reduce psychopathology via improvements …
 
-[Download paper here](http://academicpages.github.io/files/paper1.pdf)
+[Download paper here](http://andrewstier.github.io/files/env_neuro.pdf)
 
-Recommended citation: Your Name, You. (2009). "Paper Title Number 1." <i>Journal 1</i>. 1(1).
+Recommended citation: Berman, M. G., Stier, A. J., & Akcelik, G. N. (2019). Environmental neuroscience. <i>American Psychologist<i>, 74(9), 1039.
