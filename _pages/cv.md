@@ -9,53 +9,60 @@ redirect_from:
 
 {% include base_path %}
 
-< !-- *Education* --/>
+Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* B.A. in Physics and Mathematics, The University of Chicago, 2016
+* Urban Science Certificate, Mansueto Institute for Urban Innovation. Awarded June 2022
+* M.S. in Psychology, The University of Chicago, 2022
+* Ph.D in Integrative Neuroscience, Psychology, The University of Chicago, 2023 (expected)
 
-Work experience
+Awards & Honors
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Lightning Talk Winner: Balance Between Community Fragmentation and Nodal Functional Stability in Brain
+Networks Transitioning Between Cognitive States. _Networks 2021 Conference_.
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Nathan Sugarman Award for Excellence in Undergraduate Research. _The University of Chicago June 2016_.
   
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
+  
 Publications
 ======
   <ul>{% for post in site.publications %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Talks
+Preprints
 ======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
+  <ul>{% for post in site.publications %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
+
+
+Science Communication
+======
+  <ul>{% for post in site.communication %}
+    {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
+Training and Skills
+======
+* SFI Complexity GAINs Workshop: _Disintegration of societies: Quantitative modeling of complex socio-
+behavioral systems_, July 2022
+
+* Brain Connectivity Workshop, June 2022
+
+* ABCD Longitudinal Modeling Workshop, June/July 2021
+
+* Brain Connectivity Workshop, May 2021
+
+* Biological Sciences Division Quantitative Biology Boot Camp. Marine Biological Laboratory. September 2018
+  
+    
 Teaching
 ======
   <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
-)
+ 
+ 
+
 --/>
