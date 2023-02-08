@@ -2,6 +2,10 @@
 main:
   - title: "Publications"
     url: /publications/
+    
+   - title: "Preprints"
+    url: /preprints/
+
 
   #- title: "Talks"
   #  url: /talks/    
