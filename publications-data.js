@@ -1,0 +1,112 @@
+/* ============================================================================
+   PUBLICATIONS DATA — the list of papers. Edit here or via edit.html.
+   ----------------------------------------------------------------------------
+   TO ADD A PAPER: drop the PDF in files/, then copy one { } block, paste it at
+   the top, edit the fields, keep the trailing comma. Fields:
+     year, title, authors (HTML ok — bold your name), venue (HTML ok),
+     pdf ("files/x.pdf" or ""), link (DOI/arXiv URL), linkLabel ("DOI"/"arXiv"),
+     type ("journal"/"preprint"), selected (true = also on the homepage).
+   Rendering lives in publications.js and never needs editing.
+   ========================================================================== */
+
+window.PUBLICATIONS = [
+  {
+    "year": 2025,
+    "title": "Associations between racial bias and political identity in American cities often diverge from common narratives",
+    "authors": "<strong>Stier, A. J.</strong>, &amp; Ogbunugafor, C. B.",
+    "venue": "<em>npj Complexity</em>, 2(1), 20.",
+    "pdf": "files/s44260-025-00040-4.pdf",
+    "link": "https://doi.org/10.1038/s44260-025-00040-4",
+    "linkLabel": "DOI",
+    "type": "journal",
+    "selected": true
+  },
+  {
+    "year": 2024,
+    "title": "Implicit racial biases are lower in more populous, more diverse, and less segregated US cities",
+    "authors": "<strong>Stier, A. J.</strong>, Sajjadi, S., Karimi, F., Bettencourt, L. M., &amp; Berman, M. G.",
+    "venue": "<em>Nature Communications</em>, 15(1), 961.",
+    "pdf": "files/s41467-024-45013-8.pdf",
+    "link": "https://doi.org/10.1038/s41467-024-45013-8",
+    "linkLabel": "DOI",
+    "type": "journal",
+    "selected": true
+  },
+  {
+    "year": 2023,
+    "title": "A pattern of cognitive resource disruptions in childhood psychopathology",
+    "authors": "<strong>Stier, A. J.</strong>, Cardenas-Iniguez, C., Kardan, O., Moore, T. M., Meyer, F. A., Rosenberg, M. D., et al.",
+    "venue": "<em>Network Neuroscience</em>, 7(3), 1153–1180.",
+    "pdf": "files/netn_a_00322.pdf",
+    "link": "https://doi.org/10.1162/netn_a_00322",
+    "linkLabel": "DOI",
+    "type": "journal",
+    "selected": true
+  },
+  {
+    "year": 2022,
+    "title": "Differences in the functional brain architecture of sustained attention and working memory in youth and adults",
+    "authors": "Kardan, O., <strong>Stier, A. J.</strong>, Cardenas-Iniguez, C., Schertz, K. E., Pruin, J. C., Deng, Y., et al.",
+    "venue": "<em>PLOS Biology</em>, 20(12), e3001938.",
+    "pdf": "files/journal.pbio.3001938.pdf",
+    "link": "https://doi.org/10.1371/journal.pbio.3001938",
+    "linkLabel": "DOI",
+    "type": "journal",
+    "selected": false
+  },
+  {
+    "year": 2022,
+    "title": "Reply to Huth et al.: Cities are defined by their spatially aggregated socioeconomic networks",
+    "authors": "<strong>Stier, A. J.</strong>, Schertz, K. E., Rim, N. W., Cardenas-Iniguez, C., Lahey, B. B., Bettencourt, L. M. A., &amp; Berman, M. G.",
+    "venue": "<em>PNAS</em>, 119(2), e2119313118.",
+    "pdf": "files/stier-et-al-2022-reply-to-huth-et-al-cities-are-defined-by-their-spatially-aggregated-socioeconomic-networks.pdf",
+    "link": "https://www.pnas.org/doi/pdf/10.1073/pnas.2119313118",
+    "linkLabel": "DOI",
+    "type": "journal",
+    "selected": false
+  },
+  {
+    "year": 2021,
+    "title": "Evidence and theory for lower rates of depression in larger US urban areas",
+    "authors": "<strong>Stier, A. J.</strong>, Schertz, K. E., Rim, N. W., Cardenas-Iniguez, C., Lahey, B. B., Bettencourt, L. M. A., &amp; Berman, M. G.",
+    "venue": "<em>PNAS</em>, 118(31), e2022472118.",
+    "pdf": "files/stier-et-al-2021-evidence-and-theory-for-lower-rates-of-depression-in-larger-us-urban-areas.pdf",
+    "link": "https://www.pnas.org/doi/pdf/10.1073/pnas.2022472118",
+    "linkLabel": "DOI",
+    "type": "journal",
+    "selected": true
+  },
+  {
+    "year": 2021,
+    "title": "Early pandemic COVID-19 case growth rates increase with city size",
+    "authors": "<strong>Stier, A. J.</strong>, Berman, M. G., &amp; Bettencourt, L.",
+    "venue": "<em>npj Urban Sustainability</em>, 1(1), 1–6.",
+    "pdf": "files/s42949-021-00030-0.pdf",
+    "link": "https://doi.org/10.1038/s42949-021-00030-0",
+    "linkLabel": "DOI",
+    "type": "journal",
+    "selected": false
+  },
+  {
+    "year": 2025,
+    "title": "ALBATROSS: Cheap filtration-based geometry via stochastic sub-sampling",
+    "authors": "<strong>Stier, A. J.</strong>, Shi, N., Kontar, R. A., Giusti, C., &amp; Berman, M. G.",
+    "venue": "<em>arXiv:2509.03681</em>.",
+    "pdf": "files/2509.03681v1.pdf",
+    "link": "https://arxiv.org/abs/2509.03681",
+    "linkLabel": "arXiv",
+    "type": "preprint",
+    "selected": false
+  },
+  {
+    "year": 2022,
+    "title": "Effects of racial segregation on economic productivity in US cities",
+    "authors": "<strong>Stier, A. J.</strong>, Sajjadi, S., Bettencourt, L., Karimi, F., &amp; Berman, M. G.",
+    "venue": "<em>arXiv:2212.03147</em>.",
+    "pdf": "files/2212.03147v1.pdf",
+    "link": "https://arxiv.org/abs/2212.03147",
+    "linkLabel": "arXiv",
+    "type": "preprint",
+    "selected": false
+  }
+];

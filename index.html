@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scaling up individual behavior — Cognition, Culture &amp; Cities Lab</title>
+  <meta name="description" content="The Cognition, Culture & Cities Lab, directed by Andrew J. Stier at the University of Chicago Booth School of Business, studies how social and physical environments shape human cognition, sociality, and decision-making." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-screen-label="01 Home">
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-name">Cognition, Culture &amp; Cities Lab</span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="people.html">People</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" style="font-size: 17px">
+
+    <!-- ─────────────────────────── HERO ─────────────────────────── -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1 id="hero-lede" class="hero-statement" style="font-size: 60px">
+            Scaling up individual behavior.
+          </h1>
+        </div>
+
+        <figure class="hero-anim">
+          <canvas id="hero-canvas" aria-hidden="true"></canvas>
+          <button type="button" id="hero-reset" aria-label="Restart the simulation">↻ Reset</button>
+          <figcaption class="hero-anim-axis" aria-hidden="true">
+            <span class="ax-top">large city</span>
+            <span class="ax-bot">small city</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── RESEARCH ─────────────────────────── -->
+    <section id="research" class="slab slab-alt">
+      <div class="reading">
+        <p class="section-tag">Research</p>
+      </div>
+
+      <div class="threads-wrap">
+      <svg id="thread-snake" aria-hidden="true" preserveAspectRatio="none"></svg>
+      <ol class="threads">
+
+        <li class="thread">
+          <div class="thread-num"><span>01</span></div>
+          <div class="thread-body">
+            <h3>The cognitive and behavioral signatures of urban life.</h3>
+            <p>Why does it feel different to live in a large city versus a small one? Scholars across disciplines point to cognitive overload, inequality, and density — but there is little empirical psychological evidence for these claims. We catalog how people psychological adapt to city living through data collection and experiments designed to test mathematical models of cities and individual psychology. </p>
+            <p class="thread-refs"> Implicit racial biases ↓ in larger US cities · Lower depression in larger US urban areas</p>
+          </div>
+        </li>
+
+        <li class="thread">
+          <div class="thread-num"><span>02</span></div>
+          <div class="thread-body">
+            <h3>Feedback loops between individual minds and collective behavior.</h3>
+            <p>The rules that describe one person's behavior rarely fully explain the behavior of many people. However when individual behavior strongly couples to emergent behavior, the consequences are enormous. We are interested in finding those cases, describing the feedback between individual minds and collective behavior, and testing its consequences. One example is implicit social cognition — we modeling how cities structure the out-group encounters that drive or reduce bias, and work to understand when and why interventions effectively reduce bias.</p>
+            <p class="thread-refs"><a href="https://doi.org/10.1038/s44260-025-00040-4">Political identity</a> · COVID-19 case growth scales with city size</p>
+          </div>
+        </li>
+
+        <li class="thread">
+          <div class="thread-num"><span>03</span></div>
+          <div class="thread-body">
+            <h3>Mathematical models of social &amp; environmental constraints.</h3>
+            <p>How do the spatial, temporal, thermal, and energetic constraints of different environments give rise to the affordances that can shape behavior? We use constrained optimization as an overarching framework incorporating limited human time and energy, ambient temperature and climate, infrastructure layout, and transport costs to predict patterns of cultural and cognitive adaptation in different human social contexts. These models are typically multiscale, integrating biological, psychological, and societal-level mechanisms.</p>
+            <p class="thread-refs"><a href="https://doi.org/10.1038/s41467-024-45013-8">Implicit racial biases ↓ in larger, more diverse US cities</a> · ALBATROSS — filtration-based geometry </p>
+          </div>
+        </li>
+
+      </ol>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── SELECTED PUBLICATIONS ─────────────────────────── -->
+    <section id="publications" class="slab">
+      <div class="reading">
+        <p class="section-tag">Selected publications</p>
+        <h2 class="section-h">
+          <a class="section-aside" href="publications.html">Full list →</a>
+        </h2>
+      </div>
+
+      <ol class="pub-list" id="pub-list-home"></ol>
+    </section>
+
+    <!-- ─────────────────────────── NEWS ─────────────────────────── -->
+    <section id="news" class="slab slab-alt">
+      <div class="reading">
+        <p class="section-tag">News</p>
+        <h2 class="section-h"></h2>
+
+        <ol class="newsfeed">
+          <li>
+            <time datetime="2025-06">Jun 2025</time>
+            <p>“Political identity” perspective paper out in npj Complexity.</p>
+          </li>
+          <li>
+            <time datetime="2024-01">Jan 2024</time>
+            <p>“Implicit racial biases ↓ in larger US cities” published in <em>Nature Communications</em>.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────── CONTACT ─────────────────────────── -->
+    <section class="slab slab-foot">
+      <div class="reading">
+        <p class="section-tag">Contact</p>
+        <p class="foot-line">
+          <span class="email-obf">andrew.stier <span class="at">at</span> chicagobooth <span class="at">dot</span> edu</span>
+          · University of Chicago Booth School of Business, 5807 S. Woodlawn Ave., Chicago IL&nbsp;60637
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="sitefoot">
+    <div class="sitefoot-inner">
+      <span>© 2026 Andrew J. Stier</span>
+      <span class="sitefoot-meta">Built with HTML &amp; CSS · hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <!-- Publications: data + render (edit publications-data.js to add papers) -->
+  <script src="publications-data.js"></script>
+  <script src="publications.js"></script>
+  <script>
+    if (window.renderPublications) renderPublications({ selected: "pub-list-home" });
+  </script>
+
+  <!-- Hero simulation: lives rising through time, small city → large city -->
+  <script>
+  (function () {
+    "use strict";
+    const PAL = ["206, 150, 66", "59, 124, 112", "108, 75, 86"]; // Kandinsky: gold, teal-green, mauve
+    const BG = "59, 58, 62", MUTE = "137, 142, 159";             // charcoal ground, grey-blue roads
+    const cv = document.getElementById("hero-canvas");
+    if (!cv) return;
+    const ctx = cv.getContext("2d");
+
+    // Final tuned parameters
+    const P = { onset: 0.20, density: 3.0, split: 0.04, crowd: 20, speed: 1.15, start: 24, showRoads: false };
+    const SPEED_MULT = 1.35;   // global pace of the dots
+
+    const LANE_W = 4.0;
+    const lanesFor = s => (s > 0.75 ? 3 : s > 0.52 ? 2 : 1);
+    const laneOffset = (road, lane) => (lane - (road.lanes - 1) / 2) * LANE_W;
+    function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let u=Math.imul(a^a>>>15,1|a);u=u+Math.imul(u^u>>>7,61|u)^u;return((u^u>>>14)>>>0)/4294967296;};}
+
+    let SEED = 20260604;
+    let vRoads = [], hRoads = [];
+    function buildGrid(seed){
+      const rnd = mulberry32(seed);
+      const dens = P.density;
+      vRoads = []; hRoads = [];
+      const addV = (x,size,appear) => vRoads.push({x,size,lanes:lanesFor(size),appear});
+      const addH = (y,size,appear) => hRoads.push({y,size,lanes:lanesFor(size),appear});
+
+      let tier = [];
+      let x = 0.12 + rnd()*0.05;
+      while(x < 0.9){ tier.push(x); addV(x, 0.82+rnd()*0.18, rnd()*0.08); x += (0.27+rnd()*0.08)/dens; }
+      const mids = [];
+      for(let i=0;i<tier.length-1;i++){ const mx=(tier[i]+tier[i+1])/2; mids.push(mx); addV(mx, 0.56+rnd()*0.12, 0.30+rnd()*0.12); }
+      const all = tier.concat(mids).sort((a,b)=>a-b);
+      for(let i=0;i<all.length-1;i++){ if(rnd()<0.9){ const mx=(all[i]+all[i+1])/2; addV(mx, 0.40+rnd()*0.10, 0.58+rnd()*0.22); } }
+      addV(0.5+(rnd()-0.5)*0.03, 1.0, 0.0);
+      vRoads.sort((a,b)=>a.x-b.x);
+
+      let y = 0.9;
+      while(y > 0.08){
+        const prog = 1 - y;
+        const big = prog < 0.45 ? (rnd()<0.5) : (rnd()<0.22);
+        const size = big ? (0.72+rnd()*0.26) : (0.40+rnd()*0.28);
+        addH(y, size, Math.max(0, prog - 0.12 - rnd()*0.12));
+        const gap = (0.20 - 0.115*prog) / dens;
+        y -= Math.max(0.05, gap);
+      }
+    }
+    buildGrid(SEED);
+
+    function roadStrength(road, prog){
+      const a = road.appear;
+      if (prog <= a) return 0;
+      return Math.min(1, (prog - a) / 0.18);
+    }
+
+    let w = 0, h = 0, dpr = 1;
+    function resize(){
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const r = cv.getBoundingClientRect();
+      w = r.width; h = r.height;
+      cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener("resize", () => { resize(); }, { passive: true });
+
+    const speedLimit = r => 0.16 + r.size*r.size*P.speed;
+    const lanePick = road => Math.floor(Math.random()*road.lanes);
+    function nearestVIdx(px, prog){
+      let best = -1, bd = 1e9;
+      for(let i=0;i<vRoads.length;i++){
+        if(roadStrength(vRoads[i],prog)<=0) continue;
+        const d = Math.abs(px - vRoads[i].x*w);
+        if(d<bd){ bd=d; best=i; }
+      }
+      return best;
+    }
+
+    const MAXN = 240, TRAIL_MAX = 300;
+    let lives = [], flashes = [];
+    function blankLife(){ return {active:false, trail:[]}; }
+    function initPool(){ lives = []; for(let i=0;i<MAXN;i++) lives.push(blankLife()); flashes = []; }
+    const firstInactive = () => { for(let i=0;i<MAXN;i++) if(!lives[i].active) return lives[i]; return null; };
+
+    function spawnBottom(L){
+      L.x = w*(0.04 + Math.random()*0.92);   // full-width spread across the bottom
+      L.y = h + 4 + Math.random()*10;
+      L.vx = (Math.random()-0.5)*0.25;
+      L.vy = -0.30 - Math.random()*0.15;
+      L.age = 0;
+      L.tone = Math.random()<0.55 ? 0 : (Math.random()<0.6 ? 1 : 2);
+      L.lineW = 0.6+Math.random()*0.4;
+      L.net = false; L.reroll = undefined;
+      L.flash = 0; L.flashCool = 0; L.splitCool = Math.floor(Math.random()*50);
+      L.exits = Math.random() < 0.5;   // 50% may exit at the side walls (top region only)
+      L.trail = [[L.x, L.y]];
+      L.active = true;
+    }
+
+    function splitChild(parent){
+      const L = firstInactive(); if(!L) return;
+      const side = Math.random()<0.5 ? -1 : 1;
+      L.x = parent.x + side*(2+Math.random()*4);
+      L.y = parent.y;
+      L.vx = side*(0.5+Math.random()*0.5);
+      L.vy = parent.vy || -0.3;
+      L.age = 0;
+      L.tone = parent.tone;
+      L.lineW = 0.6+Math.random()*0.4;
+      L.net = false; L.reroll = undefined;
+      L.flash = 0; L.flashCool = 0; L.splitCool = 45;
+      L.exits = Math.random() < 0.5;
+      L.trail = [[L.x, L.y]];
+      L.active = true;
+      parent.splitCool = 45;
+      flashes.push({ x:parent.x, y:parent.y, life:0, max:10 });
+    }
+
+    const CORE = 24;
+    function restart(){
+      initPool();
+      for(let i=0;i<P.start;i++){
+        const L = firstInactive(); if(!L) break;
+        spawnBottom(L);
+      }
+    }
+    restart();
+
+    const resetBtn = document.getElementById("hero-reset");
+    if (resetBtn) resetBtn.addEventListener("click", () => { flashes.length = 0; restart(); });
+
+    function update(){
+      const BANDS = 6;
+      const counts = new Array(BANDS).fill(0);
+      let activeCount = 0;
+      for(let i=0;i<MAXN;i++){
+        const a = lives[i]; if(!a.active) continue; activeCount++;
+        const b = Math.max(0, Math.min(BANDS-1, Math.floor((1 - a.y/h)*BANDS)));
+        counts[b]++;
+      }
+      if(counts[0] < CORE && Math.random()<0.18 && activeCount<MAXN){
+        const L = firstInactive(); if(L){ spawnBottom(L); activeCount++; }
+      }
+      const maxActive = Math.min(MAXN, Math.round(P.crowd*12));
+
+      for(let i=0;i<MAXN;i++){
+        const a = lives[i];
+        if(!a.active) continue;
+        if(a.flash>0){ a.flash--; continue; }
+        if(a.flashCool>0) a.flashCool--;
+        if(a.splitCool>0) a.splitCool--;
+
+        const prog = 1 - a.y/h;
+
+        const splitRamp = Math.max(0, (prog - 0.45) / 0.55);
+        if(a.splitCool===0 && activeCount<maxActive &&
+           Math.random() < P.split * splitRamp * splitRamp){
+          splitChild(a);
+          activeCount++;
+        }
+
+        {
+          const gridK = Math.min(1, Math.max(0, (prog - P.onset) / 0.22));
+          if(a.reroll===undefined || --a.reroll<=0){
+            a.heading = Math.random()*Math.PI*2;
+            a.rspeed = 0.42+Math.random()*0.22;
+            a.reroll = 5+Math.floor(Math.random()*14);
+          }
+          let freeVx = Math.cos(a.heading)*a.rspeed*0.26;
+          let freeVy = -(0.50 + Math.abs(Math.sin(a.heading))*a.rspeed*0.14);
+
+          let roadVx = freeVx, roadVy = freeVy;
+          if(gridK>0){
+            if((a.recool||0)>0) a.recool--;
+            if(!a.net && (a.recool||0)<=0){
+              const vi = nearestVIdx(a.x, prog);
+              if(vi>=0 && Math.abs(a.x - vRoads[vi].x*w) < 10){
+                a.net=true; a.axis='v'; a.ridx=vi; a.dir=-1;
+                a.lane=Math.max(0,Math.min(vRoads[vi].lanes-1, Math.round((a.x-vRoads[vi].x*w)/LANE_W + (vRoads[vi].lanes-1)/2)));
+                a.cool=0;
+              } else {
+                let hi=-1, hd=1e9;
+                for(let k=0;k<hRoads.length;k++){
+                  if(roadStrength(hRoads[k],prog)<=0)continue;
+                  const dy=a.y - hRoads[k].y*h;
+                  if(dy>=-1 && dy<6 && dy<hd){ hd=dy; hi=k; }
+                }
+                if(hi>=0 && Math.random()<0.5){
+                  a.net=true; a.axis='h'; a.ridx=hi; a.dir=Math.random()<0.5?-1:1;
+                  a.lane=Math.max(0,Math.min(hRoads[hi].lanes-1, Math.round((a.y-hRoads[hi].y*h)/LANE_W + (hRoads[hi].lanes-1)/2)));
+                  a.cool=0;
+                }
+              }
+            }
+            if(a.net && a.cool===0){
+              const band = Math.max(0, 1 - (prog - P.onset) / 0.16);
+              if(Math.random() < 0.035 * band){ a.net=false; a.recool=12; }
+            }
+            if(a.net){
+              if(a.cool>0)a.cool--;
+              if(a.axis==='v'){
+                let road=vRoads[a.ridx];
+                if(roadStrength(road,prog)<=0){ const idx=nearestVIdx(a.x,prog); if(idx>=0){a.ridx=idx;road=vRoads[idx];a.lane=lanePick(road);} else { a.net=false; } }
+                if(a.net){
+                const tcap=Math.max(0,Math.min(1,(prog-0.5)/0.5));
+                const cap=0.5*(1-tcap)+speedLimit(road)*tcap;
+                const cx=road.x*w+laneOffset(road,a.lane);
+                roadVx=(cx-a.x)*0.2; roadVy=-cap;
+                for(let k=0;k<hRoads.length;k++){
+                  if(roadStrength(hRoads[k],prog)<=0)continue;
+                  const ny=hRoads[k].y*h;
+                  if(a.cool===0 && Math.abs(a.y-ny)<cap+0.6 && Math.random()<0.28){
+                    a.axis='h'; a.ridx=k; a.dir=Math.random()<0.5?-1:1;
+                    a.lane=lanePick(hRoads[k]); a.cool=14;
+                    a.y=ny+laneOffset(hRoads[k],a.lane); break;
+                  }
+                }
+                }
+              } else {
+                let road=hRoads[a.ridx];
+                const tcap=Math.max(0,Math.min(1,(prog-0.5)/0.5));
+                const cap=0.5*(1-tcap)+speedLimit(road)*tcap;
+                const cy=road.y*h+laneOffset(road,a.lane);
+                roadVy=(cy-a.y)*0.2; roadVx=a.dir*cap;
+                for(let k=0;k<vRoads.length;k++){
+                  if(roadStrength(vRoads[k],prog)<=0)continue;
+                  const nx=vRoads[k].x*w;
+                  if(a.cool===0 && Math.abs(a.x-nx)<cap+0.6 && Math.random()<0.55){
+                    a.axis='v'; a.ridx=k; a.dir=-1; a.lane=lanePick(vRoads[k]); a.cool=14;
+                    a.x=nx+laneOffset(vRoads[k],a.lane); break;
+                  }
+                }
+              }
+            }
+          } else {
+            a.net=false;
+          }
+
+          if(a.net){ a.vx = roadVx; a.vy = roadVy; }
+          else { a.vx = freeVx; a.vy = freeVy; }
+          a.x += a.vx * SPEED_MULT; a.y += a.vy * SPEED_MULT;
+        }
+
+        // side walls: 50% of dots (a.exits) leave through the sides in the
+        // top two-thirds; everyone else (and the bottom third) is elastic.
+        const margin = 4;
+        const canExit = a.exits && a.y < h*0.667;
+        if (a.x < margin) {
+          if (canExit) { a.active = false; }
+          else { a.x = margin; a.vx = Math.abs(a.vx); if (a.heading !== undefined) a.heading = Math.PI - a.heading; if (a.axis === 'h') a.dir = 1; }
+        } else if (a.x > w - margin) {
+          if (canExit) { a.active = false; }
+          else { a.x = w - margin; a.vx = -Math.abs(a.vx); if (a.heading !== undefined) a.heading = Math.PI - a.heading; if (a.axis === 'h') a.dir = -1; }
+        }
+
+        if(!a.active) continue;
+        a.trail.push([a.x,a.y]);
+        if(a.trail.length>TRAIL_MAX)a.trail.shift();
+        a.age++;
+        if(a.y<-14 || a.age>3000) a.active=false;
+      }
+
+      // interactions: flash + brief pause + colour swap on contact
+      const FL = 5.5, FL2 = FL*FL;
+      for(let i=0;i<MAXN;i++){
+        const a = lives[i]; if(!a.active||a.flashCool>0) continue;
+        for(let j=i+1;j<MAXN;j++){
+          const b = lives[j]; if(!b.active||b.flashCool>0) continue;
+          const dx=a.x-b.x, dy=a.y-b.y;
+          if(dx*dx+dy*dy<FL2){
+            a.flash=32; b.flash=32; a.flashCool=60; b.flashCool=60;
+            flashes.push({x:(a.x+b.x)/2,y:(a.y+b.y)/2,life:0,max:22});
+            break;
+          }
+        }
+      }
+    }
+
+    function render(){
+      ctx.fillStyle=`rgba(${BG},1)`; ctx.fillRect(0,0,w,h);
+
+      for(let i=0;i<MAXN;i++){
+        const a = lives[i]; if(!a.active) continue;
+        const rgb = PAL[a.tone]||PAL[0];
+        const birth = Math.min(1,a.age/40);
+        const death = a.y<h*0.05?Math.max(0,a.y/(h*0.05)):1;
+        const env = birth*death;
+        if(a.trail.length>1){
+          ctx.lineWidth=a.lineW; ctx.lineCap="round";
+          ctx.strokeStyle=`rgba(${rgb},${0.14*env})`;
+          ctx.beginPath();
+          ctx.moveTo(a.trail[0][0],a.trail[0][1]);
+          for(let j=1;j<a.trail.length;j++) ctx.lineTo(a.trail[j][0],a.trail[j][1]);
+          ctx.stroke();
+        }
+        if(a.flash>0){
+          const other = PAL[(a.tone+1)%PAL.length];
+          ctx.fillStyle="rgba(255,255,255,0.95)";
+          ctx.beginPath(); ctx.arc(a.x,a.y,3.0,0,Math.PI*2); ctx.fill();
+          ctx.fillStyle=`rgba(${other},0.95)`;
+          ctx.beginPath(); ctx.arc(a.x,a.y,1.6,0,Math.PI*2); ctx.fill();
+        } else {
+          ctx.fillStyle=`rgba(${rgb},${0.95*env})`;
+          ctx.beginPath(); ctx.arc(a.x,a.y,2.0,0,Math.PI*2); ctx.fill();
+        }
+      }
+
+      for(let i=flashes.length-1;i>=0;i--){
+        const f = flashes[i]; f.life++;
+        const k = f.life/f.max;
+        ctx.strokeStyle=`rgba(255,255,255,${(1-k)*0.9})`;
+        ctx.lineWidth=1.1;
+        ctx.beginPath(); ctx.arc(f.x,f.y,1.5+k*6,0,Math.PI*2); ctx.stroke();
+        if(f.life>=f.max) flashes.splice(i,1);
+      }
+    }
+
+    let raf = null;
+    function loop(){ update(); render(); raf = requestAnimationFrame(loop); }
+    loop();
+    window.__heroPump = (n) => { for(let i=0;i<(n||1);i++) update(); render(); };
+  })();
+  </script>
+
+  <!-- Research threading ribbon: three Navajo lines snaking around the threads -->
+  <script>
+  (function () {
+    const wrap = document.querySelector(".threads-wrap");
+    const svg  = document.getElementById("thread-snake");
+    if (!wrap || !svg) return;
+    const threads = [...wrap.querySelectorAll(".thread")];
+    if (threads.length < 3) return;
+
+    const COLORS = ["#660D20", "#E59A52", "#094568"]; // maroon, gold, blue
+    const SP = 9, R = 10, PAD = 22;
+
+    function lnorm(dx, dy) { const m = Math.hypot(dx, dy) || 1; return [dy/m, -dx/m]; }
+
+    function offsetPts(pts, d) {
+      const out = [];
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i], prev = pts[i-1], next = pts[i+1];
+        let nx = 0, ny = 0;
+        if (prev) { const n = lnorm(p[0]-prev[0], p[1]-prev[1]); nx += n[0]; ny += n[1]; }
+        if (next) { const n = lnorm(next[0]-p[0], next[1]-p[1]); nx += n[0]; ny += n[1]; }
+        const m = Math.hypot(nx, ny) || 1; nx /= m; ny /= m;
+        out.push([p[0] + nx*d, p[1] + ny*d]);
+      }
+      return out;
+    }
+
+    function roundedPath(pts, r) {
+      if (pts.length < 2) return "";
+      let d = "";
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        if (i === 0) { d += `M ${p[0]} ${p[1]} `; continue; }
+        if (i === pts.length - 1) { d += `L ${p[0]} ${p[1]} `; continue; }
+        const prev = pts[i-1], next = pts[i+1];
+        const v1 = [p[0]-prev[0], p[1]-prev[1]], v2 = [next[0]-p[0], next[1]-p[1]];
+        const l1 = Math.hypot(...v1)||1, l2 = Math.hypot(...v2)||1;
+        const rr = Math.min(r, l1/2, l2/2);
+        const a = [p[0]-v1[0]/l1*rr, p[1]-v1[1]/l1*rr];
+        const b = [p[0]+v2[0]/l2*rr, p[1]+v2[1]/l2*rr];
+        d += `L ${a[0]} ${a[1]} Q ${p[0]} ${p[1]} ${b[0]} ${b[1]} `;
+      }
+      return d;
+    }
+
+    const polyLen = pts => { let s=0; for (let i=1;i<pts.length;i++) s+=Math.hypot(pts[i][0]-pts[i-1][0], pts[i][1]-pts[i-1][1]); return s; };
+    const polyCum = (pts, k) => { let s=0; for (let i=1;i<=k;i++) s+=Math.hypot(pts[i][0]-pts[i-1][0], pts[i][1]-pts[i-1][1]); return s; };
+
+    function fillVariable(d, color, wf, base, dir, aMin) {
+      const NS = "http://www.w3.org/2000/svg";
+      const tmp = document.createElementNS(NS, "path");
+      tmp.setAttribute("d", d);
+      const L = tmp.getTotalLength();
+      const n = Math.max(2, Math.ceil(L / 4));
+      const C = [];
+      for (let i = 0; i <= n; i++) { const p = tmp.getPointAtLength(L*i/n); C.push([p.x, p.y]); }
+      const left = [], right = [], W = [];
+      for (let i = 0; i < C.length; i++) {
+        const a = C[Math.max(0,i-1)], b = C[Math.min(C.length-1,i+1)];
+        let dx = b[0]-a[0], dy = b[1]-a[1]; const m = Math.hypot(dx,dy)||1; dx/=m; dy/=m;
+        const nx = dy, ny = -dx;
+        const t = i / (C.length - 1);
+        const half = wf(C[i][1], t) / 2;
+        const lean = t > 0.6 ? (t - 0.6) / 0.4 : 0;
+        const startLean = t < 0.12 ? (0.12 - t) / 0.12 : 0;
+        const sh = dir ? dir * (half - base/2 - 1.9*lean - 1.7*startLean) : 0;
+        const cx = C[i][0] + nx*sh, cy = C[i][1] + ny*sh;
+        left.push([cx + nx*half, cy + ny*half]);
+        right.push([cx - nx*half, cy - ny*half]);
+        W.push(half * 2);
+      }
+      const r = parseInt(color.slice(1,3),16), g = parseInt(color.slice(3,5),16), b = parseInt(color.slice(5,7),16);
+      const alphaOf = w => aMin + (0.75 - aMin) * Math.max(0, Math.min(1, (w - base) / base));
+      for (let i = 0; i < C.length - 1; i++) {
+        const al = alphaOf((W[i] + W[i+1]) / 2);
+        const dd = `M ${left[i][0]} ${left[i][1]} L ${left[i+1][0]} ${left[i+1][1]} L ${right[i+1][0]} ${right[i+1][1]} L ${right[i][0]} ${right[i][1]} Z`;
+        const path = document.createElementNS(NS, "path");
+        path.setAttribute("d", dd);
+        path.setAttribute("fill", `rgba(${r},${g},${b},${al.toFixed(3)})`);
+        path.setAttribute("stroke", "none");
+        path.setAttribute("shape-rendering", "geometricPrecision");
+        svg.appendChild(path);
+      }
+    }
+
+    function build() {
+      const wb = wrap.getBoundingClientRect();
+      svg.setAttribute("viewBox", `0 0 ${wb.width} ${wb.height}`);
+
+      const t0 = threads[0].getBoundingClientRect();
+      const colL = t0.left - wb.left, colR = t0.right - wb.left;
+      const Lx = colL - PAD, Rx = colR + PAD;
+
+      const top = y => threads[y].getBoundingClientRect().top - wb.top;
+      const bot = y => threads[y].getBoundingClientRect().bottom - wb.top;
+      const yR0 = top(0) - 12;
+      const yR1 = (bot(0) + top(1)) / 2;
+      const yR2 = (bot(1) + top(2)) / 2;
+      const yR3 = bot(2) + 16;
+
+      // start on the right of section 1 (no top bar); snake down, each colour
+      // dropping off one section later: maroon → gold → blue.
+      const spine = [
+        [Rx, yR0],
+        [Rx, yR1], [Lx, yR1],
+        [Lx, yR2], [Rx, yR2],
+        [Rx, yR3], [Lx, yR3],
+      ];
+      const ends = [3, 5, 6];        // maroon 3 pts, gold 5, blue 6 (down right, no bottom)
+      const OFF  = [-SP, SP, 0];     // red inside, gold outside, blue middle
+
+      const base = 2.6;
+      const cl = v => Math.max(0, Math.min(1, v));
+
+      const redPoly  = offsetPts(spine.slice(0, ends[0]), OFF[0]);
+      const goldPoly = offsetPts(spine.slice(0, ends[1]), OFF[1]);
+      const bluePoly = offsetPts(spine.slice(0, ends[2]), OFF[2]);
+      const Lr = polyLen(redPoly), Lg = polyLen(goldPoly), Lb = polyLen(bluePoly);
+      const tPeakG = polyCum(goldPoly, 2) / Lg;
+      const tAG    = Math.max(0, (polyCum(goldPoly, 2) - 0.25 * Lr) / Lg);
+      const tPeakB = polyCum(bluePoly, 4) / Lb;
+      const tAB    = Math.max(0, (polyCum(bluePoly, 4) - 0.25 * Lg) / Lb);
+
+      const widthFn = [
+        (y, t) => t < 0.75 ? base * 2 : base * (2 - cl((t - 0.75) / 0.25)),
+        (y, t) => t < tAG    ? base
+                : t < tPeakG ? base * (1 + cl((t - tAG) / (tPeakG - tAG)))
+                : t < 0.75   ? base * 2
+                :              base * (2 - cl((t - 0.75) / 0.25)),
+        (y, t) => t < tAB    ? base
+                : t < tPeakB ? base * (1 + cl((t - tAB) / (tPeakB - tAB)))
+                : t < 0.75   ? base * 2
+                :              base * (2 - cl((t - 0.75) / 0.25)),
+      ];
+
+      const endInset = SP + 5;
+      const trimEnd = (pts, dist) => {
+        const q = pts.map(p => p.slice()), n = q.length, a = q[n-2], b = q[n-1];
+        let dx = b[0]-a[0], dy = b[1]-a[1]; const m = Math.hypot(dx,dy)||1;
+        q[n-1] = [b[0]-dx/m*dist, b[1]-dy/m*dist];
+        return q;
+      };
+      const TRIM = [endInset, endInset, 0];
+
+      svg.innerHTML = "";
+      const DIR = [-1, 1, 0];
+      const AMIN = [0.4, 0.5, 0.5];
+      [2, 1, 0].forEach(ci => {
+        let op = offsetPts(spine.slice(0, ends[ci]), OFF[ci]);
+        if (TRIM[ci]) op = trimEnd(op, TRIM[ci]);
+        const d = roundedPath(op, R);
+        fillVariable(d, COLORS[ci], widthFn[ci], base, DIR[ci], AMIN[ci]);
+      });
+    }
+
+    build();
+    let raf;
+    function scheduleBuild() { cancelAnimationFrame(raf); raf = requestAnimationFrame(build); }
+    window.addEventListener("resize", scheduleBuild, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+    // Rebuild whenever the threads change height (e.g. text edits, font swap,
+    // line-count changes) so the ribbon always fits the current layout.
+    if (window.ResizeObserver) {
+      const ro = new ResizeObserver(scheduleBuild);
+      ro.observe(wrap);
+      threads.forEach(t => ro.observe(t));
+    }
+    // A couple of delayed rebuilds catch late reflow on first paint.
+    setTimeout(build, 250);
+    setTimeout(build, 1200);
+  })();
+  </script>
+
+</body>
+</html>

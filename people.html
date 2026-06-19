@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>People — Cognition, Culture &amp; Cities Lab</title>
+  <meta name="description" content="People of the Cognition, Culture & Cities Lab, directed by Andrew J. Stier at the University of Chicago Booth School of Business." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-screen-label="People">
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-name">Cognition, Culture &amp; Cities Lab</span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="people.html" aria-current="page">People</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ─────────────────────────── PEOPLE ─────────────────────────── -->
+    <section id="people" class="slab slab-recruit">
+      <div class="reading">
+        <p class="section-tag tag-on-dark">People</p>
+      </div>
+
+      <!-- Roster is rendered from people.js (edit that file or use edit.html) -->
+      <div id="people-root"></div>
+    </section>
+
+    <!-- ─────────────────────────── CONTACT FOOTER ─────────────────────────── -->
+    <section class="slab slab-foot">
+      <div class="reading">
+        <p class="section-tag">Contact</p>
+        <p class="foot-line">
+          <span class="email-obf">andrew.stier <span class="at">at</span> chicagobooth <span class="at">dot</span> edu</span>
+          ·
+          University of Chicago Booth School of Business, 5807 S. Woodlawn Ave., Chicago IL&nbsp;60637
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="sitefoot">
+    <div class="sitefoot-inner">
+      <span>© 2026 Andrew J. Stier</span>
+      <span class="sitefoot-meta">Built with HTML &amp; CSS · hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <!-- Hidden editor gate: clicking the "." in the PI's name opens this -->
+  <div id="login-modal" class="login-modal" hidden>
+    <div class="login-box" role="dialog" aria-modal="true" aria-labelledby="login-h">
+      <p id="login-h" class="login-h">Editor access</p>
+      <form id="login-form">
+        <input type="password" id="login-pw" placeholder="Password" autocomplete="current-password" aria-label="Password" />
+        <div class="login-row">
+          <button type="button" id="login-cancel" class="login-btn ghost">Cancel</button>
+          <button type="submit" class="login-btn">Unlock</button>
+        </div>
+        <p id="login-err" class="login-err" hidden>Incorrect password.</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="people-data.js"></script>
+  <script src="people.js"></script>
+  <script>
+    renderPeople("people-root");
+
+    // Wire the login dot → password modal → edit.html
+    (function () {
+      const modal = document.getElementById("login-modal");
+      const pw = document.getElementById("login-pw");
+      const err = document.getElementById("login-err");
+      function open() { modal.hidden = false; err.hidden = true; pw.value = ""; setTimeout(() => pw.focus(), 30); }
+      function close() { modal.hidden = true; }
+
+      document.addEventListener("click", (e) => {
+        const dot = e.target.closest(".login-dot");
+        if (dot) { e.preventDefault(); open(); }
+      });
+      document.addEventListener("keydown", (e) => {
+        if ((e.key === "Enter" || e.key === " ") && document.activeElement &&
+            document.activeElement.classList.contains("login-dot")) { e.preventDefault(); open(); }
+        if (e.key === "Escape" && !modal.hidden) close();
+      });
+      document.getElementById("login-cancel").addEventListener("click", close);
+      modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+      document.getElementById("login-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (window.LabGate && LabGate.check(pw.value)) {
+          LabGate.grant();
+          window.location.href = "edit.html";
+        } else {
+          err.hidden = false; pw.select();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

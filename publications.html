@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications — Andrew J. Stier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-screen-label="02 Publications">
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-name">Cognition, Culture &amp; Cities Lab</span>
+      </a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="people.html">People</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ─── JOURNAL ARTICLES ─── -->
+    <section class="slab">
+      <div class="reading">
+        <p class="section-tag">Journal articles</p>
+      </div>
+
+      <ol class="pub-list" id="pub-list-journal"></ol>
+    </section>
+
+    <!-- ─── PREPRINTS ─── -->
+    <section class="slab slab-alt">
+      <div class="reading">
+        <p class="section-tag">Preprints</p>
+      </div>
+
+      <ol class="pub-list" id="pub-list-preprint"></ol>
+    </section>
+
+    <section class="slab slab-foot">
+      <div class="reading">
+        <p class="foot-line">
+          <a href="index.html">← Back home</a> · For citation files, see
+          <a href="https://scholar.google.com/citations?user=">Google&nbsp;Scholar</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="sitefoot">
+    <div class="sitefoot-inner">
+      <span>© 2026 Andrew J. Stier</span>
+      <span class="sitefoot-meta">Built with HTML &amp; CSS · hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="publications-data.js"></script>
+  <script src="publications.js"></script>
+  <script>
+    if (window.renderPublications) renderPublications({ journal: "pub-list-journal", preprint: "pub-list-preprint" });
+  </script>
+
+</body>
+</html>

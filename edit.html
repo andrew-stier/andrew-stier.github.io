@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site Editor — Cognition, Culture &amp; Cities Lab</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    :root { --ed-gap: 18px; }
+    body { background: var(--bg); }
+    .ed-wrap { max-width: 940px; margin: 0 auto; padding: 24px var(--gutter) 96px; }
+    .ed-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 16px 0 18px; border-bottom: 1px solid var(--rule); margin-bottom: 24px; }
+    .ed-title { font-family: var(--serif); font-size: 26px; font-weight: 500; letter-spacing: -0.01em; margin: 0; }
+    .ed-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ed-tab { font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 7px 14px; border: 1px solid var(--rule); border-radius: 999px; background: transparent; color: var(--ink-soft); cursor: pointer; }
+    .ed-tab.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .ed-panel { display: none; }
+    .ed-panel.active { display: block; }
+    .ed-card { background: var(--bg-elev); border: 1px solid var(--rule); border-radius: 4px; padding: 18px; margin: 0 0 16px; position: relative; }
+    .ed-row { display: grid; grid-template-columns: 130px minmax(0,1fr); gap: 12px; align-items: start; margin: 0 0 12px; }
+    .ed-row:last-child { margin-bottom: 0; }
+    .ed-row > label { font-family: var(--sans); font-size: 12px; letter-spacing: 0.04em; color: var(--mute); padding-top: 8px; text-transform: uppercase; }
+    .ed-row input[type="text"], .ed-row input[type="number"], .ed-row textarea, .ed-row select {
+      width: 100%; font-family: var(--sans); font-size: 14px; color: var(--ink); background: var(--bg);
+      border: 1px solid var(--rule); border-radius: 3px; padding: 8px 10px; resize: vertical;
+    }
+    .ed-row textarea { min-height: 58px; line-height: 1.5; }
+    .ed-row input:focus, .ed-row textarea:focus, .ed-row select:focus { outline: none; border-color: var(--accent); }
+    .ed-inline { display: flex; align-items: center; gap: 8px; }
+    .ed-chk { display: flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 13px; color: var(--ink-soft); padding-top: 8px; }
+    .ed-cardtools { display: flex; gap: 6px; position: absolute; top: 12px; right: 12px; }
+    .ed-icon { font-family: var(--sans); font-size: 12px; border: 1px solid var(--rule); background: var(--bg); border-radius: 4px; padding: 3px 8px; cursor: pointer; color: var(--ink-soft); }
+    .ed-icon:hover { border-color: var(--accent); color: var(--accent); }
+    .ed-icon.danger:hover { border-color: #9C2B2B; color: #9C2B2B; }
+    .btn { font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); cursor: pointer; }
+    .btn:hover { background: var(--accent); border-color: var(--accent); }
+    .btn.ghost { background: transparent; color: var(--ink); }
+    .btn.ghost:hover { color: var(--accent); border-color: var(--accent); background: transparent; }
+    .ed-add { margin: 4px 0 28px; }
+    .ed-h { font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-ink); margin: 28px 0 12px; }
+    .ed-h:first-child { margin-top: 0; }
+    .ed-hint { font-family: var(--sans); font-size: 13px; color: var(--mute); line-height: 1.5; margin: 0 0 16px; max-width: 64ch; }
+    .ed-publish { background: var(--bg-elev); border: 1px solid var(--rule); border-radius: 4px; padding: 20px; }
+    .ed-log { font-family: var(--mono); font-size: 12px; line-height: 1.6; background: #2a2823; color: #e7e2d6; border-radius: 4px; padding: 12px 14px; margin-top: 14px; max-height: 220px; overflow: auto; white-space: pre-wrap; }
+    .ed-log .ok { color: #8fcf9f; } .ed-log .err { color: #e79a8f; } .ed-log .dim { color: #9a948a; }
+    /* lock screen */
+    .lock { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--bg); z-index: 50; }
+    .lock[hidden] { display: none; }
+    .lock-box { width: 100%; max-width: 320px; text-align: center; padding: 24px; }
+    .lock-box h1 { font-family: var(--serif); font-weight: 500; font-size: 22px; margin: 0 0 18px; }
+    .lock-box input { width: 100%; font-family: var(--sans); font-size: 15px; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 3px; background: var(--bg-elev); margin-bottom: 12px; }
+    .lock-box input:focus { outline: none; border-color: var(--accent); }
+    .lock-err { color: #9C2B2B; font-family: var(--sans); font-size: 13px; min-height: 18px; margin: 10px 0 0; }
+  </style>
+</head>
+<body data-screen-label="Editor">
+
+  <!-- LOCK SCREEN -->
+  <div id="lock" class="lock">
+    <form class="lock-box" id="lock-form">
+      <h1>Site editor</h1>
+      <input type="password" id="lock-pw" placeholder="Password" autocomplete="current-password" />
+      <button type="submit" class="btn" style="width:100%">Unlock</button>
+      <p class="lock-err" id="lock-err"></p>
+      <p class="ed-hint" style="margin-top:18px"><a href="index.html">← Back to site</a></p>
+    </form>
+  </div>
+
+  <!-- EDITOR -->
+  <div class="ed-wrap" id="editor" hidden>
+    <div class="ed-top">
+      <h1 class="ed-title">Site editor</h1>
+      <div class="ed-tabs">
+        <button class="ed-tab active" data-tab="pubs">Publications</button>
+        <button class="ed-tab" data-tab="people">People</button>
+        <button class="ed-tab" data-tab="join">Join</button>
+        <button class="ed-tab" data-tab="publish">Publish</button>
+      </div>
+    </div>
+
+    <div class="ed-panel active" id="panel-pubs"></div>
+    <div class="ed-panel" id="panel-people"></div>
+    <div class="ed-panel" id="panel-join"></div>
+
+    <div class="ed-panel" id="panel-publish">
+      <p class="ed-h">Publish to GitHub</p>
+      <p class="ed-hint">
+        Commits your changes straight to the repo; GitHub Pages redeploys in a few
+        seconds. You need a <strong>fine-grained personal access token</strong> with
+        <em>Contents: Read &amp; write</em> on this repository. Paste it below — it
+        stays in this tab only and is never saved to the site.
+      </p>
+      <div class="ed-card">
+        <div class="ed-row"><label>Owner</label><input type="text" id="gh-owner" value="andrew-stier" /></div>
+        <div class="ed-row"><label>Repo</label><input type="text" id="gh-repo" value="andrew-stier.github.io" /></div>
+        <div class="ed-row"><label>Branch</label><input type="text" id="gh-branch" value="main" /></div>
+        <div class="ed-row"><label>Token</label><input type="password" id="gh-token" placeholder="github_pat_…" autocomplete="off" /></div>
+        <div class="ed-row"><label>Commit message</label><input type="text" id="gh-msg" value="Update site content via editor" /></div>
+      </div>
+      <div class="ed-inline">
+        <button class="btn" id="btn-publish">Publish changes</button>
+        <button class="btn ghost" id="btn-download">Download files instead</button>
+      </div>
+      <div class="ed-log" id="log" hidden></div>
+
+      <p class="ed-h">Change password</p>
+      <p class="ed-hint">Type a new password to get its hash, then publish it. (Updates auth.js.)</p>
+      <div class="ed-card">
+        <div class="ed-row"><label>New password</label><input type="text" id="pw-new" placeholder="new password" /></div>
+        <div class="ed-row"><label>Hash</label><input type="text" id="pw-hash" readonly placeholder="appears here" /></div>
+      </div>
+      <div class="ed-inline">
+        <button class="btn ghost" id="btn-hash">Compute hash</button>
+        <button class="btn" id="btn-pw-publish">Publish new password</button>
+      </div>
+
+      <p class="ed-h" style="margin-top:28px">Session</p>
+      <div class="ed-inline">
+        <a class="btn ghost" href="index.html">View site</a>
+        <button class="btn ghost" id="btn-lock">Lock editor</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="publications-data.js"></script>
+  <script src="people-data.js"></script>
+  <script src="join-data.js"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    /* ---------- gate ---------- */
+    const lock = document.getElementById("lock");
+    const editor = document.getElementById("editor");
+    function unlock() { lock.hidden = true; editor.hidden = false; buildAll(); }
+    document.getElementById("lock-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const pw = document.getElementById("lock-pw").value;
+      if (window.LabGate && LabGate.check(pw)) { LabGate.grant(); unlock(); }
+      else { document.getElementById("lock-err").textContent = "Incorrect password."; }
+    });
+
+    /* ---------- working copy of the data ---------- */
+    const D = {
+      pubs:   JSON.parse(JSON.stringify(window.PUBLICATIONS || [])),
+      people: JSON.parse(JSON.stringify(window.PEOPLE || {})),
+      join:   JSON.parse(JSON.stringify(window.JOIN || {}))
+    };
+
+    /* ---------- tabs ---------- */
+    document.querySelectorAll(".ed-tab").forEach(t => t.addEventListener("click", () => {
+      document.querySelectorAll(".ed-tab").forEach(x => x.classList.remove("active"));
+      document.querySelectorAll(".ed-panel").forEach(x => x.classList.remove("active"));
+      t.classList.add("active");
+      document.getElementById("panel-" + t.dataset.tab).classList.add("active");
+    }));
+
+    /* ---------- tiny DOM helpers ---------- */
+    function el(tag, cls, html) { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+    function row(label, control) { const r = el("div", "ed-row"); r.appendChild(el("label", null, label)); r.appendChild(control); return r; }
+    function input(value, on, type) { const i = el("input"); i.type = type || "text"; i.value = value == null ? "" : value; i.addEventListener("input", () => on(i.value)); return i; }
+    function textarea(value, on) { const t = el("textarea"); t.value = value == null ? "" : value; t.addEventListener("input", () => on(t.value)); return t; }
+    function tools(onUp, onDown, onDel) {
+      const w = el("div", "ed-cardtools");
+      const up = el("button", "ed-icon", "↑"); up.title = "Move up"; up.onclick = onUp;
+      const dn = el("button", "ed-icon", "↓"); dn.title = "Move down"; dn.onclick = onDown;
+      const del = el("button", "ed-icon danger", "✕"); del.title = "Delete"; del.onclick = onDel;
+      w.append(up, dn, del); return w;
+    }
+    function move(arr, i, d) { const j = i + d; if (j < 0 || j >= arr.length) return; const t = arr[i]; arr[i] = arr[j]; arr[j] = t; }
+
+    /* ---------- PUBLICATIONS editor ---------- */
+    function buildPubs() {
+      const p = document.getElementById("panel-pubs"); p.innerHTML = "";
+      p.appendChild(el("p", "ed-hint", "Newest-first is automatic (by year). “On homepage” features it in the Selected list. Authors &amp; venue accept simple HTML — wrap your name in &lt;strong&gt;…&lt;/strong&gt;."));
+      D.pubs.forEach((pub, i) => {
+        const c = el("div", "ed-card");
+        c.appendChild(tools(() => { move(D.pubs, i, -1); buildPubs(); }, () => { move(D.pubs, i, 1); buildPubs(); }, () => { D.pubs.splice(i, 1); buildPubs(); }));
+        c.appendChild(row("Year", input(pub.year, v => pub.year = parseInt(v) || v, "number")));
+        c.appendChild(row("Title", textarea(pub.title, v => pub.title = v)));
+        c.appendChild(row("Authors", textarea(pub.authors, v => pub.authors = v)));
+        c.appendChild(row("Venue", textarea(pub.venue, v => pub.venue = v)));
+        c.appendChild(row("PDF path", input(pub.pdf, v => pub.pdf = v)));
+        c.appendChild(row("Link URL", input(pub.link, v => pub.link = v)));
+        c.appendChild(row("Link label", input(pub.linkLabel, v => pub.linkLabel = v)));
+        const sel = el("select");
+        ["journal", "preprint"].forEach(o => { const op = el("option", null, o); op.value = o; if ((pub.type || "journal") === o) op.selected = true; sel.appendChild(op); });
+        sel.addEventListener("change", () => pub.type = sel.value);
+        c.appendChild(row("Type", sel));
+        const chkWrap = el("div", "ed-chk");
+        const chk = el("input"); chk.type = "checkbox"; chk.checked = !!pub.selected; chk.addEventListener("change", () => pub.selected = chk.checked);
+        chkWrap.append(chk, document.createTextNode("Feature on homepage"));
+        c.appendChild(row("Homepage", chkWrap));
+        p.appendChild(c);
+      });
+      const add = el("button", "btn ghost ed-add", "+ Add paper");
+      add.onclick = () => { D.pubs.unshift({ year: new Date().getFullYear(), title: "", authors: "<strong>Stier, A. J.</strong>", venue: "", pdf: "", link: "", linkLabel: "DOI", type: "journal", selected: false }); buildPubs(); };
+      p.appendChild(add);
+    }
+
+    /* ---------- PEOPLE editor ---------- */
+    function buildPeople() {
+      const p = document.getElementById("panel-people"); p.innerHTML = "";
+      const D2 = D.people; D2.pi = D2.pi || {}; D2.pi.links = D2.pi.links || [];
+      D2.members = D2.members || []; D2.undergrads = D2.undergrads || []; D2.alumni = D2.alumni || [];
+
+      p.appendChild(el("p", "ed-h", "Principal investigator"));
+      const pi = el("div", "ed-card");
+      pi.appendChild(row("Name", input(D2.pi.name, v => D2.pi.name = v)));
+      pi.appendChild(row("Role", input(D2.pi.role, v => D2.pi.role = v)));
+      pi.appendChild(row("Photo path", input(D2.pi.photo, v => D2.pi.photo = v)));
+      pi.appendChild(row("Bio (HTML)", textarea(D2.pi.bio, v => D2.pi.bio = v)));
+      p.appendChild(pi);
+      p.appendChild(el("p", "ed-h", "PI links"));
+      D2.pi.links.forEach((lk, i) => {
+        const c = el("div", "ed-card");
+        c.appendChild(tools(() => { move(D2.pi.links, i, -1); buildPeople(); }, () => { move(D2.pi.links, i, 1); buildPeople(); }, () => { D2.pi.links.splice(i, 1); buildPeople(); }));
+        c.appendChild(row("Label", input(lk.label, v => lk.label = v)));
+        c.appendChild(row("URL", input(lk.href, v => lk.href = v)));
+        p.appendChild(c);
+      });
+      const addLink = el("button", "btn ghost ed-add", "+ Add link");
+      addLink.onclick = () => { D2.pi.links.push({ label: "", href: "" }); buildPeople(); };
+      p.appendChild(addLink);
+
+      p.appendChild(el("p", "ed-h", "Members heading"));
+      const mh = el("div", "ed-card"); mh.appendChild(row("Heading", input(D2.membersHeading, v => D2.membersHeading = v))); p.appendChild(mh);
+      p.appendChild(el("p", "ed-h", "Members (grad students &amp; postdocs)"));
+      D2.members.forEach((m, i) => {
+        const c = el("div", "ed-card");
+        c.appendChild(tools(() => { move(D2.members, i, -1); buildPeople(); }, () => { move(D2.members, i, 1); buildPeople(); }, () => { D2.members.splice(i, 1); buildPeople(); }));
+        c.appendChild(row("Name", input(m.name, v => m.name = v)));
+        c.appendChild(row("Role", input(m.role, v => m.role = v)));
+        c.appendChild(row("Blurb", textarea(m.blurb, v => m.blurb = v)));
+        c.appendChild(row("Photo path", input(m.photo, v => m.photo = v)));
+        p.appendChild(c);
+      });
+      const addM = el("button", "btn ghost ed-add", "+ Add member");
+      addM.onclick = () => { D2.members.push({ name: "", role: "", blurb: "", photo: "" }); buildPeople(); };
+      p.appendChild(addM);
+
+      p.appendChild(el("p", "ed-h", "Undergraduates (one per line)"));
+      const ug = el("div", "ed-card");
+      ug.appendChild(row("Heading", input(D2.undergradsHeading, v => D2.undergradsHeading = v)));
+      ug.appendChild(row("Lines", textarea((D2.undergrads || []).join("\n"), v => D2.undergrads = v.split("\n").filter(s => s.trim()))));
+      p.appendChild(ug);
+
+      p.appendChild(el("p", "ed-h", "Alumni"));
+      const al = el("div", "ed-card");
+      al.appendChild(row("Heading", input(D2.alumniHeading, v => D2.alumniHeading = v)));
+      al.appendChild(row("Lines", textarea((D2.alumni || []).join("\n"), v => D2.alumni = v.split("\n").filter(s => s.trim()))));
+      al.appendChild(row("Note", textarea(D2.alumniNote, v => D2.alumniNote = v)));
+      p.appendChild(al);
+    }
+
+    /* ---------- JOIN editor ---------- */
+    function buildJoin() {
+      const p = document.getElementById("panel-join"); p.innerHTML = "";
+      const J = D.join; J.cards = J.cards || []; J.faqs = J.faqs || [];
+      p.appendChild(el("p", "ed-h", "Top of page"));
+      const top = el("div", "ed-card");
+      top.appendChild(row("Eyebrow", input(J.eyebrow, v => J.eyebrow = v)));
+      top.appendChild(row("Heading", input(J.heading, v => J.heading = v)));
+      top.appendChild(row("Lede", textarea(J.lede, v => J.lede = v)));
+      p.appendChild(top);
+
+      p.appendChild(el("p", "ed-h", "Cards"));
+      J.cards.forEach((c2, i) => {
+        const c = el("div", "ed-card");
+        c.appendChild(tools(() => { move(J.cards, i, -1); buildJoin(); }, () => { move(J.cards, i, 1); buildJoin(); }, () => { J.cards.splice(i, 1); buildJoin(); }));
+        c.appendChild(row("Title", input(c2.title, v => c2.title = v)));
+        c.appendChild(row("Body (HTML)", textarea(c2.body, v => c2.body = v)));
+        p.appendChild(c);
+      });
+      const addC = el("button", "btn ghost ed-add", "+ Add card");
+      addC.onclick = () => { J.cards.push({ title: "", body: "" }); buildJoin(); };
+      p.appendChild(addC);
+
+      p.appendChild(el("p", "ed-h", "FAQ"));
+      J.faqs.forEach((f, i) => {
+        const c = el("div", "ed-card");
+        c.appendChild(tools(() => { move(J.faqs, i, -1); buildJoin(); }, () => { move(J.faqs, i, 1); buildJoin(); }, () => { J.faqs.splice(i, 1); buildJoin(); }));
+        c.appendChild(row("Question", input(f.q, v => f.q = v)));
+        c.appendChild(row("Answer (HTML)", textarea(f.a, v => f.a = v)));
+        p.appendChild(c);
+      });
+      const addF = el("button", "btn ghost ed-add", "+ Add FAQ");
+      addF.onclick = () => { J.faqs.push({ q: "", a: "<p></p>" }); buildJoin(); };
+      p.appendChild(addF);
+    }
+
+    function buildAll() {
+      try { buildPubs(); } catch (e) { console.error("buildPubs", e && e.message, e && e.stack); }
+      try { buildPeople(); } catch (e) { console.error("buildPeople", e && e.message, e && e.stack); }
+      try { buildJoin(); } catch (e) { console.error("buildJoin", e && e.message, e && e.stack); }
+    }
+
+    /* ---------- serialize back to *-data.js source ---------- */
+    const HEAD = {
+      pubs: "/* PUBLICATIONS DATA — generated by edit.html. Fields: year, title, authors(HTML),\n   venue(HTML), pdf, link, linkLabel, type (journal/preprint), selected. */\n\n",
+      people: "/* PEOPLE DATA — generated by edit.html. */\n\n",
+      join: "/* JOIN DATA — generated by edit.html. */\n\n"
+    };
+    function fileFor(which) {
+      if (which === "pubs")   return { path: "publications-data.js", text: HEAD.pubs + "window.PUBLICATIONS = " + JSON.stringify(D.pubs, null, 2) + ";\n" };
+      if (which === "people") return { path: "people-data.js",       text: HEAD.people + "window.PEOPLE = " + JSON.stringify(D.people, null, 2) + ";\n" };
+      if (which === "join")   return { path: "join-data.js",         text: HEAD.join + "window.JOIN = " + JSON.stringify(D.join, null, 2) + ";\n" };
+    }
+
+    /* ---------- logging ---------- */
+    const logEl = document.getElementById("log");
+    function log(msg, cls) { logEl.hidden = false; const line = el("div", cls || ""); line.textContent = msg; logEl.appendChild(line); logEl.scrollTop = logEl.scrollHeight; }
+
+    /* ---------- GitHub publish ---------- */
+    function b64(str) { return btoa(unescape(encodeURIComponent(str))); }
+    async function ghPut(path, text, cfg, message) {
+      const base = "https://api.github.com/repos/" + cfg.owner + "/" + cfg.repo + "/contents/" + path;
+      const headers = { Authorization: "Bearer " + cfg.token, Accept: "application/vnd.github+json", "Content-Type": "application/json" };
+      let sha;
+      const g = await fetch(base + "?ref=" + encodeURIComponent(cfg.branch), { headers });
+      if (g.ok) { sha = (await g.json()).sha; } else if (g.status !== 404) { throw new Error(path + ": read failed (" + g.status + ") " + (await g.text())); }
+      const body = { message: message, content: b64(text), branch: cfg.branch };
+      if (sha) body.sha = sha;
+      const r = await fetch(base, { method: "PUT", headers, body: JSON.stringify(body) });
+      if (!r.ok) throw new Error(path + ": write failed (" + r.status + ") " + (await r.text()));
+    }
+    function cfg() {
+      return {
+        owner: document.getElementById("gh-owner").value.trim(),
+        repo: document.getElementById("gh-repo").value.trim(),
+        branch: document.getElementById("gh-branch").value.trim() || "main",
+        token: document.getElementById("gh-token").value.trim()
+      };
+    }
+    document.getElementById("btn-publish").addEventListener("click", async () => {
+      const c = cfg(); const msg = document.getElementById("gh-msg").value || "Update site content";
+      if (!c.token) { log("Paste a GitHub token first.", "err"); return; }
+      logEl.innerHTML = ""; log("Publishing…", "dim");
+      try {
+        for (const which of ["pubs", "people", "join"]) {
+          const f = fileFor(which);
+          log("→ " + f.path, "dim");
+          await ghPut(f.path, f.text, c, msg);
+          log("✓ committed " + f.path, "ok");
+        }
+        log("Done. GitHub Pages will redeploy in ~30s.", "ok");
+      } catch (e) { log("✗ " + e.message, "err"); }
+    });
+
+    /* ---------- download fallback ---------- */
+    function download(name, text) {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([text], { type: "text/javascript" }));
+      a.download = name; a.click(); URL.revokeObjectURL(a.href);
+    }
+    document.getElementById("btn-download").addEventListener("click", () => {
+      ["pubs", "people", "join"].forEach(w => { const f = fileFor(w); download(f.path, f.text); });
+      log("Downloaded 3 files — commit them to your repo's root.", "ok");
+    });
+
+    /* ---------- change password ---------- */
+    document.getElementById("btn-hash").addEventListener("click", () => {
+      const v = document.getElementById("pw-new").value;
+      document.getElementById("pw-hash").value = v ? window.sha256(v) : "";
+    });
+    document.getElementById("btn-pw-publish").addEventListener("click", async () => {
+      const v = document.getElementById("pw-new").value;
+      if (!v) { log("Type a new password first.", "err"); return; }
+      const hash = window.sha256(v); document.getElementById("pw-hash").value = hash;
+      const c = cfg(); if (!c.token) { log("Paste a GitHub token to publish the password.", "err"); return; }
+      const text =
+        "/* AUTH — generated by edit.html. Light gate for the editor. */\n\n" +
+        "window.LAB_AUTH = { PASSWORD_SHA256: \"" + hash + "\" };\n\n" +
+        "/* SHA-256 + gate helpers (loaded by the site). */\n" +
+        AUTH_TAIL;
+      logEl.innerHTML = "";
+      try { log("Publishing new password…", "dim"); await ghPut("auth.js", text, c, "Update editor password"); log("✓ password updated. Use the new one next time.", "ok"); }
+      catch (e) { log("✗ " + e.message, "err"); }
+    });
+
+    document.getElementById("btn-lock").addEventListener("click", () => { LabGate.clear(); location.reload(); });
+
+    // The sha256 + gate helper source, re-emitted when republishing auth.js so
+    // the file stays self-contained.
+    const AUTH_TAIL =
+      "window.sha256 = " + window.sha256.toString() + ";\n" +
+      "window.LabGate = {\n" +
+      "  check: function (pw) { return window.sha256(pw) === window.LAB_AUTH.PASSWORD_SHA256; },\n" +
+      "  grant: function () { try { sessionStorage.setItem('lab_authed','1'); } catch (e) {} },\n" +
+      "  isAuthed: function () { try { return sessionStorage.getItem('lab_authed') === '1'; } catch (e) { return false; } },\n" +
+      "  clear: function () { try { sessionStorage.removeItem('lab_authed'); } catch (e) {} }\n" +
+      "};\n";
+
+    // Everything above is initialized now — safe to auto-unlock a returning session.
+    if (window.LabGate && LabGate.isAuthed()) unlock();
+  })();
+  </script>
+
+</body>
+</html>
