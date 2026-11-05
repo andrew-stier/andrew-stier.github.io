@@ -97,7 +97,7 @@
       <div class="ed-card">
         <div class="ed-row"><label>Owner</label><input type="text" id="gh-owner" value="andrew-stier" /></div>
         <div class="ed-row"><label>Repo</label><input type="text" id="gh-repo" value="andrew-stier.github.io" /></div>
-        <div class="ed-row"><label>Branch</label><input type="text" id="gh-branch" value="main" /></div>
+        <div class="ed-row"><label>Branch</label><input type="text" id="gh-branch" value="master" /></div>
         <div class="ed-row"><label>Token</label><input type="password" id="gh-token" placeholder="github_pat_…" autocomplete="off" /></div>
         <div class="ed-row"><label>Commit message</label><input type="text" id="gh-msg" value="Update site content via editor" /></div>
       </div>
@@ -333,7 +333,7 @@
       return {
         owner: document.getElementById("gh-owner").value.trim(),
         repo: document.getElementById("gh-repo").value.trim(),
-        branch: document.getElementById("gh-branch").value.trim() || "main",
+        branch: document.getElementById("gh-branch").value.trim() || "master",
         token: document.getElementById("gh-token").value.trim()
       };
     }
